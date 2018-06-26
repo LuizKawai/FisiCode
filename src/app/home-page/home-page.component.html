@@ -1,0 +1,99 @@
+<mat-sidenav-container class="sidenav-container" style="background-color: #1000">
+	<mat-sidenav #drawer class="sidenav">
+		<mat-toolbar color="primary">
+			<div>
+				<img mat-card-image src="{{imagePerson}}" alt="image person" style="width: 20%; height: 80%; display: inline-block;">&nbsp;&nbsp;&nbsp;<span style="display: inline-block">{{username}}</span>
+			</div>
+		</mat-toolbar>
+		<mat-nav-list><br><br><br>
+			<a mat-list-item href="home-page">
+				<mat-icon>home</mat-icon>&nbsp;&nbsp;
+				<span>Home</span>
+			</a>
+			<a mat-list-item href="profile-user">
+				<mat-icon>account_circle</mat-icon>&nbsp;&nbsp;
+				<span>Mi perfil</span>
+			</a>
+			<a mat-list-item href="list-questions">
+				<mat-icon>list</mat-icon>&nbsp;&nbsp;
+				<span>Lista de Preguntas</span>
+			</a>
+			<a mat-list-item href="add-question">
+				<mat-icon>add_circle</mat-icon>&nbsp;&nbsp;
+				<span>Añadir pregunta</span>
+			</a>
+			<a mat-list-item href="">
+				<mat-icon>exit_to_app</mat-icon>&nbsp;&nbsp;
+				<span>Salir</span>
+			</a>
+		</mat-nav-list>
+	</mat-sidenav>
+	<mat-sidenav-content>
+		<mat-toolbar color="primary">
+			<button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+				<mat-icon aria-label="Side nav toggle icon">menu
+				</mat-icon>
+			</button>&nbsp;&nbsp;
+			<span class="spacer"></span>
+			<span>FisiCode_</span>
+			<span class="spacer"></span>
+			<span></span>
+		</mat-toolbar>
+		<div class="container"><br><br>
+			<div class="row">
+				<div class="col-sm-12 text-center" style="background: url(../assets/img/background.png);background-size: 100%">
+					<div class="row">
+						<div class="col-sm-9">
+							<div class="image-container">
+								<img class="card-img-top" src="../assets/img/Logo.png" class="img-fluid" alt="Responsive image" style="width:100%">
+							</div>
+							<div class="row">
+								<div class="col-sm-4">
+									<br>
+									<div class="card" align=center >
+										<br><p>Hola <span style="font-weight: bold">{{ firstName }} {{ lastName }}</span>!!!</p>
+										<img mat-card-image src="{{imagePerson}}" alt="image person" style="width: 75%; height: 75%;cursor: pointer;" (click)="goProfileUser()" >
+										<p>Tienes {{numQuestions}} preguntas realizadas</p>
+									</div>
+								</div>
+								<div class="col-sm-8">
+									<br>
+									<div class="card" align=center style="cursor: pointer;" (click)="goListQuestions()">
+										<br><h5>Preguntas recientes</h5>
+										<mat-chip-list class="mat-chip-list-stacked">
+											<mat-chip *ngFor="let question of listQuestions" selected="true" [color]="blue"  style="width: 80%; cursor: pointer;border-radius: 7.5px" (click)="goListQuestions()">
+												{{ question.title }}
+											</mat-chip><br>
+										</mat-chip-list>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-3">
+							<br>
+							<div class="card" align=center >
+								<br><h5>Realiza tu pregunta</h5>
+								<mat-card-actions>
+									<button mat-button (click)="goAddQuestion()"><mat-icon>add_circle</mat-icon></button>
+								</mat-card-actions>
+								<br>
+							</div>
+							<br>
+							<div class="card" align=center >
+								<br><h5>Temas más populares</h5>
+								<mat-chip-list class="mat-chip-list-stacked">
+									<mat-chip *ngFor="let chip of tags" selected="true" [color]="blue" style="background-color: #FFC107;color: black; width: 80%;border-radius: 7.5px">
+										{{chip.name}}
+									</mat-chip><br>
+								</mat-chip-list>
+								<!--<mat-list-item role="listitem" *ngFor="let question of listQuestions">
+									<div class="card" align=center>{{ question.title }}</div>
+								</mat-list-item>-->
+							</div><br>
+						</div>­­­ ­<br>
+					­</div>
+				</div>
+			</div>
+		</div>
+	</mat-sidenav-content>
+</mat-sidenav-container>

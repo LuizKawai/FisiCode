@@ -1,0 +1,33 @@
+<div class="container">
+	<div class="row">
+		<div class="col-sm-6 offset-sm-3 text-center">
+			<div class="example-container">
+				<div class="card" align=center style="box-shadow: 0px 0px 10px 1px rgba(0,0,0,.2);">
+					<br>
+					<img class="card-img-top" src="../assets/img/Logo.png" class="img-fluid" alt="Responsive image" style="width: 75%; height: 75%">
+					<div class="card-body">
+						<h2 class=" card-title">Iniciar Sesión</h2><br>
+						<mat-form-field class="example-full-width">
+							<input matInput placeholder="Usuario o Email" [formControl]="username">
+							<mat-error *ngIf="username.invalid">{{getErrorMessageUsername()}}</mat-error>
+						</mat-form-field>
+						<br>
+						<mat-form-field class="example-full-width">
+							<input matInput placeholder="Contraseña" [type]="hide ? 'password': 'text'" [formControl]="password">
+							<mat-icon style="cursor: pointer;" matSuffix (click)="hide = !hide">{{ hide ? 'visibility' : 'visibility_off' }}</mat-icon>
+							<mat-error *ngIf="password.invalid">{{getErrorMessagePassword()}}</mat-error>
+						</mat-form-field>
+						<br>
+						<br>
+						<div class="text-center">
+							<button mat-raised-button color="primary" (click)="loginUser()">Ingresar</button>
+							<br>
+							<br>
+							<p>Aún no tienes cuenta?, <a href="register/">Registrate aquí</a></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
